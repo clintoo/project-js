@@ -1,0 +1,22 @@
+<!-- STEP 2: Add Alpine.js and a Counter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Alpine Portfolio - Step 2</title>
+  <meta charset="utf-8" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+  <h1>Hi, I'm [Your Name]</h1>
+  <section>
+    <h2>About Me</h2>
+    <p>This is my first portfolio section.</p>
+  </section>
+  <section x-data="{ count: 0 }">
+    <h2>Simple Counter</h2>
+    <button @click="count--">-</button>
+    <span x-text="count"></span>
+    <button @click="count++">+</button>
+  </section>
+</body>
+</html>
