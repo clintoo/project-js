@@ -1,0 +1,57 @@
+<!-- FINAL: Alpine.js Portfolio - All features together! -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Alpine Portfolio - Final</title>
+  <meta charset="utf-8" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    .dark { background: #1a202c; color: #fff; }
+    body { transition: background 0.3s, color 0.3s; }
+    section { margin-bottom: 2em; }
+    .project { border:1px solid #eee; margin:10px 0; padding:10px; border-radius: 8px;}
+  </style>
+</head>
+<body x-data="{dark:false}" :class="{dark: dark}">
+  <h1>Hi, I'm [Your Name]</h1>
+  <section>
+    <h2>About Me</h2>
+    <p>This is my Alpine.js-powered portfolio, built live in a workshop!</p>
+  </section>
+  <!-- Projects Section -->
+  <section x-data="{
+      projects: [],
+      fetchProjects() {
+        this.projects = [
+          { title: 'Alpine Demo', desc: 'Taught at the workshop.' },
+          { title: 'Mini App', desc: 'Built with just HTML & Alpine.' }
+        ];
+      }
+    }" x-init="fetchProjects()">
+    <h2>Projects</h2>
+    <template x-for="proj in projects" :key="proj.title">
+      <div class="project">
+        <strong x-text="proj.title"></strong>
+        <p x-text="proj.desc"></p>
+      </div>
+    </template>
+    <button @click="fetchProjects()">Reload</button>
+  </section>
+  <!-- Theme Toggle -->
+  <section>
+    <h2>Theme Toggle</h2>
+    <button @click="dark = !dark">
+      Switch to <span x-text="dark ? 'Light' : 'Dark'"></span> Mode
+    </button>
+  </section>
+  <!-- Contact -->
+  <section x-data="{ name:'', sent:false, submit() { this.sent=true; } }">
+    <h2>Contact Me</h2>
+    <form @submit.prevent="submit">
+      <input x-model="name" placeholder="Name" required>
+      <button type="submit">Send</button>
+      <span x-show="sent" x-text="`Thanks, ${name}!`" style="margin-left: 1em;"></span>
+    </form>
+  </section>
+</body>
+</html>
