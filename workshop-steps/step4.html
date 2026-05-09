@@ -1,0 +1,33 @@
+<!-- STEP 4: Dark/Light Mode Toggle -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Alpine Portfolio - Step 4</title>
+  <meta charset="utf-8" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    .dark { background: #1a202c; color: #fff; }
+    body { transition: background 0.3s, color 0.3s; }
+  </style>
+</head>
+<body x-data="{dark:false}" :class="{dark: dark}">
+  <h1>Hi, I'm [Your Name]</h1>
+  <section>
+    <h2>About Me</h2>
+    <p>This is my first portfolio section.</p>
+  </section>
+  <section>
+    <h2>Projects</h2>
+    <!-- ...reuse step 3 code here... -->
+  </section>
+  <section>
+    <h2>Theme Toggle</h2>
+    <button @click="dark = !dark">
+      Switch to <span x-text="dark ? 'Light' : 'Dark'"></span> Mode
+    </button>
+    <div>
+      <p>The background and text update instantly!</p>
+    </div>
+  </section>
+</body>
+</html>
